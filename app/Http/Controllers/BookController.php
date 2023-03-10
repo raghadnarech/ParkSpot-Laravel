@@ -29,6 +29,9 @@ class BookController extends Controller
        $result=$book->save();
        return $book;
     }
+
+
+    
     public function calculate_parkTime($id)
     {
        $book=Book::find($id);
