@@ -31,6 +31,7 @@ Route::post('allcars_user',[CarsController::class,'getcars_user']);
 Route::post('Login',[UsersController::class,'Login']);
 Route::post('book',[BookController::class,'book_park']);
 Route::post('calc_book/{id}',[BookController::class,'calculate_parkTime']);
+Route::post('extend_parkingTime/{id}',[BookController::class,'extend_parkingTime']);
 Route::get('getamount/{id}',[WalletsController::class,'show']);
 Route::post('withdraw',[WalletsController::class,'withdraw']);
 Route::post('deposit',[WalletsController::class,'deposit']);
