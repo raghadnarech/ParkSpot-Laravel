@@ -7,6 +7,8 @@ use App\Http\Controllers\CarsController;
 use App\Http\Controllers\ZonesController;
 use App\Http\Controllers\WalletsController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AdminsController;
+use App\Http\Controllers\SlotsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +37,6 @@ Route::post('extend_parkingTime/{id}',[BookController::class,'extend_parkingTime
 Route::get('getamount/{id}',[WalletsController::class,'show']);
 Route::post('withdraw',[WalletsController::class,'withdraw']);
 Route::post('deposit',[WalletsController::class,'deposit']);
+Route::get('getallslots/{id}',[SlotsController::class,'getallslots']);
+
+Route::post('LoginAdmin',[AdminsController::class,'LoginAdmin']);

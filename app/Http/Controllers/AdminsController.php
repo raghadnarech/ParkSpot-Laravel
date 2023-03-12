@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Slot;
+use App\Models\Admin;
+use App\Models\WalletAdmin;
 
-
-class SlotsController extends Controller
+class AdminsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,10 +27,30 @@ class SlotsController extends Controller
     {
         //
     }
-    public function getallslots($id)
+
+    public function LoginAdmin(Request $request)
     {
-        $slot=Slot::where('zone_id',$id)->get();
-        return $slot;
+       
+       $admin=Admin::where('phone',   $request->phone)->get();
+      
+       if ($admin->isEmpty()) {
+         return "The number is not registered";
+       }else
+       { 
+            $f=Admin::where('phone',   $request->phone)->where('password',    $request->password)->get();
+            if ($f->isEmpty()) {
+                   return "The number or password is incorrect";
+           
+           }else{
+               return $f;
+           }
+       
+     
+     }
+     return "Error";
+   
+    
+   
     }
     /**
      * Store a newly created resource in storage.
@@ -40,7 +60,22 @@ class SlotsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    //     $admin=new User;
+    //     $admin->name = $request->name;
+    //     $admin->phone = $request->phone;
+    //     $admin->password = $request->password;
+    //    $result=$admin->save();
+    //    $wallet=new WalletAdmin;
+    //    $wallet->amount=0;
+    //    $wallet->admin_id=$admin->id;
+    //    $wallet->save();
+    //    if($result){
+    //     return  response()->json(['admin-id'=>
+    //     $admin->id,'status'=> 200]
+    //         );
+    //         }else{
+    //             return "Error";
+    //         }
     }
 
     /**

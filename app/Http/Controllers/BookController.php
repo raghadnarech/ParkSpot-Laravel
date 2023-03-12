@@ -45,9 +45,14 @@ class BookController extends Controller
        $book=Book::find($id);
        $carbonDate = Carbon::parse($book->endTime_book);
        $book->endTime_book=  $carbonDate->addHour(intval($request->hours));
-      //  $book->endTime_book = $carbonDate;
-       $book->save();
-       return  $book->endTime_book;
-      //  response()->json(['succes'=>'Done to Extend Park Time']);
+      $stuts=$book->update([
+         'endTime_book'=>$carbonDate,
+      ]);
+      if($stuts){
+         $newBook=Book::find($id);
+         $newBook->message='Add Time [-'.$request->hours.'-] Successfully . . .';
+         return $newBook;
+      }
+      return 'oops..!!, You Can Not Add Time .';
     }
 }

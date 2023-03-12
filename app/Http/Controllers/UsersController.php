@@ -62,8 +62,6 @@ class UsersController extends Controller
     }
  public function Login(Request $request)
  {
-  
-    
     $user=User::where('phone',   $request->phone)->get();
     if ($user->isEmpty()) {
       return "The number is not registered";
@@ -76,13 +74,8 @@ class UsersController extends Controller
         }else{
             return $f;
         }
-    
-  
   }
   return "Error";
-
- 
-
  }
     /**
      * Display the specified resource.
